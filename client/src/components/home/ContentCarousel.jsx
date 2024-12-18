@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
 
@@ -38,9 +38,9 @@ const ContentCarousel = () => {
         className="mySwiper h-80 object-cover 
         rounded-md mb-4"
       >
-        {data?.map((item, i) => (
-          <SwiperSlide>
-            <img src={item.download_url} />
+        {data?.map((item, i) => ( 
+          <SwiperSlide key={i}>
+            <img src={item.download_url}  />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -58,7 +58,7 @@ const ContentCarousel = () => {
         className="mySwiper object-cover rounded-md"
       >
         {data?.map((item, i) => (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <img 
             className="rounded-md"
             src={item.download_url} />

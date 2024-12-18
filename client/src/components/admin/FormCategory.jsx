@@ -1,6 +1,6 @@
 // rafce
-import React, { useState, useEffect } from 'react'
-import { createCategory, listCategory, removeCategory } from '../../api/Category'
+import { useState, useEffect } from 'react'
+import { createCategory, removeCategory } from '../../api/Category'
 import useEcomStore from '../../store/ecom-store'
 import { toast } from 'react-toastify'
 

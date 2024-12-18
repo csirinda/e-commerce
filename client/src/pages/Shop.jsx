@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import ProductCard from '../components/card/ProductCard'
 import useEcomStore from '../store/ecom-store'
 import SearchCard from '../components/card/SearchCard'

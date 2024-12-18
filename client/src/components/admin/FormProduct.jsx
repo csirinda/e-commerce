@@ -1,5 +1,5 @@
 // rafce
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useEcomStore from "../../store/ecom-store";
 import { createProduct, deleteProduct } from "../../api/product";
 import { toast } from "react-toastify";

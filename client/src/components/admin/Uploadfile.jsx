@@ -1,5 +1,5 @@
 // rafce
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import Resize from 'react-image-file-resizer'
 import { removeFiles, uploadFiles } from '../../api/product'
