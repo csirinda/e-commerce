@@ -36,7 +36,7 @@ exports.adminCheck = async (req, res, next) => {
             where: { email: email }
         })
         if (!adminUser || adminUser.role !== 'admin') {
-            return res.status(403).json({ message: 'Acess Denied: Admin Only' })
+            return res.status(403).json({ message: 'Access Denied: Admin Only' })
         }
         // console.log('admin check', adminUser)
         next()

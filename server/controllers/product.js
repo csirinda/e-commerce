@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
                 description: description,
                 price: parseFloat(price),
                 quantity: parseInt(quantity),
-                categoryId: parseInt(categoryId),
+                categoryId: categoryId ? String(categoryId) : null,
                 images: {
                     create: images.map((item) => ({
                         asset_id: item.asset_id,
@@ -63,7 +63,7 @@ exports.read = async (req, res) => {
         const { id } = req.params
         const products = await prisma.product.findFirst({
             where: {
-                id: Number(id)
+                id: id
             },
             include: {
                 category: true,
@@ -84,20 +84,20 @@ exports.update = async (req, res) => {
 
         await prisma.image.deleteMany({
             where: {
-                productId: Number(req.params.id)
+                productId: req.params.id
             }
         })
 
         const product = await prisma.product.update({
             where: {
-                id: Number(req.params.id)
+                id: req.params.id
             },
             data: {
                 title: title,
                 description: description,
                 price: parseFloat(price),
                 quantity: parseInt(quantity),
-                categoryId: parseInt(categoryId),
+                categoryId: categoryId ? String(categoryId) : null,
                 images: {
                     create: images.map((item) => ({
                         asset_id: item.asset_id,
@@ -121,7 +121,7 @@ exports.remove = async (req, res) => {
         // หนังชีวิต 
         // Step 1 ค้นหาสินค้า include images
         const product = await prisma.product.findFirst({
-            where: { id: Number(id) },
+            where: { id: id },
             include: { images: true }
         })
         if (!product) {
@@ -143,7 +143,7 @@ exports.remove = async (req, res) => {
         // Step 3 ลบสินค้า
         await prisma.product.delete({
             where: {
-                id: Number(id)
+                id: id
             }
         })
 
@@ -223,7 +223,7 @@ const handleCategory = async (req, res, categoryId) => {
         const products = await prisma.product.findMany({
             where: {
                 categoryId: {
-                    in: categoryId.map((id) => Number(id))
+                    in: categoryId.map((id) => id)
                 }
             },
             include: {
